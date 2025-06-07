@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Veterinarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Veterinarios</h1>
+
+    <ul>
+        {% for vet in vets %}
+            <li>{{ vet.name }}</li>
+        {% else %}
+            <li>No hay veterinarios registrados.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Agregar Veterinario</h2>
+    <form method="POST" action="{{ url_for('add_vet') }}">
+        <input type="text" name="name" placeholder="Nombre del veterinario" required />
+        <button type="submit">Agregar</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">Inicio</a> | <a href="{{ url_for('list_pets') }}">Mascotas</a></p>
+</body>
+</html>
